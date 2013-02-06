@@ -1,0 +1,14 @@
+<h1>Rock, Paper, Scissors</h1>
+<hr>
+<br>
+
+<h2><b>Let's Play! Choose One:</b></h2>
+
+<br>
+
+<% @rps.each do |rps| %>
+    <%= link_to (rps.name), choose_rps_path(rps.name) %>
+    &nbsp;
+    &nbsp;
+    &nbsp;
+<% end %>

@@ -1,0 +1,16 @@
+<h1>Poker Cards</h1>
+<p />
+<%= link_to 'Refresh this page to deal a new hand.', pokers_url %>
+
+<hr>
+<br>
+
+<% @pokers.each do |card| %>
+	<%= card.name %> 
+	of 
+	<%= card.suit %>
+	&nbsp;
+	&nbsp;
+	&nbsp;
+	&nbsp;
+<% end %>
