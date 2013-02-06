@@ -16,7 +16,6 @@ class DiceController < ApplicationController
   	@diceA = rand(6)+1
  	@diceB = rand(6)+1
  	@point = @diceA + @diceB
- 	pointVal = @point
     @response = nil
     @button_label = nil
     @button_action= nil
@@ -37,7 +36,7 @@ class DiceController < ApplicationController
   end
 
   def rollagain
-    @point = params[:point]
+    @point = params[:point]    
     @diceA = rand(6)+1
  	@diceB = rand(6)+1
  	@currentTotal = @diceA + @diceB
@@ -45,7 +44,7 @@ class DiceController < ApplicationController
  	@button_label = nil
  	@button_action= nil
  	
-    if @currentTotal == 7 || @currentTotal == 11
+    if @currentTotal == 7
  	 	@response = "You lose!"
  	 	@button_label = "Play again."
  	 	@button_action= {:action => "index"}
@@ -54,7 +53,7 @@ class DiceController < ApplicationController
  	 	@button_label = "Play again."
  	 	@button_action= {:action => "index"}
  	else
- 		@response = "Your point is %d. You can roll again." %[@point]
+ 		@response = "Now try to roll an %d again before you roll a 7." %[@point]
  		@button_label = "Roll again."
  		@button_action= {:action => "rollagain", :point => @point}
  	end
@@ -62,7 +61,7 @@ class DiceController < ApplicationController
   end
 
   def create
-    @dice = Dice.new(params[:dice])
+    @dice = Dice.new(params[:point])
     @dice.save
     redirect_to dice_url
   end
