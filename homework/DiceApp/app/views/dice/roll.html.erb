@@ -12,5 +12,9 @@
 
 <p />
 <h4><%= @response %></h4>
+<% if @response2 != nil %>
+	<p />
+	<h4><%= @response2 %></h4>
+<% end %>
 
 <%= button_to @button_label,  @button_action, :method => :get %>

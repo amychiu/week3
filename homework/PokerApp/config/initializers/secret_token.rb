@@ -4,4 +4,4 @@
 # If you change this key, all old signed cookies will become invalid!
 # Make sure the secret is at least 30 characters and all random,
 # no regular words or you'll be exposed to dictionary attacks.
-Poker::Application.config.secret_token = '3654b9445d2c26ac194049f9b2bdd93ddc604529044edd100da6508785a3af53e47a298e0e79df884c3dda16e1ba8ce1ad6d1c5e236b35087569745c75ba52a4'
+Poker::Application.config.secret_token = 'de864278c99da9288c7decb72a0e94981b916953d4b5ac1a2db97e4e3df550cc57a12e862ad7ebff97efc6f2894aeb54b001b1e63d50f4de4fc6b4e18d0c8831'

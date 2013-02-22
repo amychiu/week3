@@ -6,8 +6,8 @@
 
 <br>
 
-<% @rps.each do |rps| %>
-    <%= link_to (rps.name), choose_rps_path(rps.name) %>
+<% @gameArray.each do |rps| %>
+    <%= link_to (rps), choose_rps_path(:name => rps) %>
     &nbsp;
     &nbsp;
     &nbsp;

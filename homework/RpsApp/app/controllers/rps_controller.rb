@@ -1,59 +1,28 @@
-class RpsController < ApplicationController
+class RpsController < ActionController::Base
 
-  def index
-    @rps = Rps.all
-  end
 
-  def destroy
-    @rps = Rps.find_by_id(params[:id])
-    @rps.destroy
-    redirect_to rps_url
-  end
+	def getArray
+		game = ["Rock", "Paper", "Scissors"]
+		return game
+	end
 
-  def edit
-    @rps = Rps.find_by_id(params[:id])
-  end
-
-  def update
-    @rps = Rps.find_by_id(params[:id])
-    @rps.title = params[:rps][:name]
-    @rps.url = params[:rps][:url]
-    @rps.save
-    redirect_to rps_url
-  end
-  
-  def find_name
-  	d = Rps.all(:order => "Random()", :limit => 1)
-  	dname = nil
-   	d.each do |rps|
-   		dname = rps.name
-   	end
-   	return dname
-  end
-
-  def show
-  	@pickedName = params[:choose]
-    @temp = find_name
+	def index
+		@gameArray = getArray
+	end
+	
+	def choose
+		@pickedName = params[:name]
+    	@random = getArray.sample
     
-    if (@pickedName === @temp)
-  		@scenario = "It's a tie!"
-  	elsif ((@pickedName === "Rock" && @temp === "Scissors")||
-  		(@pickedName === "Paper" && @temp === "Rock")||
-  		(@pickedName === "Scissors" && @temp === "Paper"))
+    	if (@pickedName === @random)
+  			@scenario = "It's a tie!"
+  		elsif ((@pickedName === "Rock" && @random === "Scissors")||
+  			(@pickedName === "Paper" && @random === "Rock")||
+  			(@pickedName === "Scissors" && @random === "Paper"))
   			@scenario = "You Win!"
-  	else
-  		@scenario = "I Win!"
- 	end
-  end
-
-  def new
-    @rps = Rps.new
-  end
-
-  def create
-    @rps = Rps.new(params[:rps])
-    @rps.save
-    redirect_to rps_url
-  end
+  		else
+  			@scenario = "I Win!"
+ 		end
+	end
 
 end
